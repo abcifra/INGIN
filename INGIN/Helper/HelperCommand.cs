@@ -19,6 +19,7 @@ namespace INGIN.Helper
             UIDocument uidoc = commandData.Application.ActiveUIDocument;
 
             HelperView HelperView = new HelperView();
+            
             HelperView.ShowDialog();
 
 

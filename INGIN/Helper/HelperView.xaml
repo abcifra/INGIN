@@ -6,7 +6,8 @@
              xmlns:local="clr-namespace:INGIN.Helper"
              mc:Ignorable="d"
              Title="О программе" Height="250" Width="200"
-             WindowStyle="SingleBorderWindow" ResizeMode="NoResize" Icon="/INGIN;component/Resources/Icons/ingin.ico"  WindowStartupLocation="CenterScreen">
+             WindowStyle="SingleBorderWindow" ResizeMode="NoResize" 
+             Icon="/INGIN;component/Resources/Icons/ingin.ico" WindowStartupLocation="CenterScreen">
 
     <Grid Margin="0,0,0,10">
         <Grid.RowDefinitions>
@@ -15,9 +16,11 @@
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
-
         </Grid.ColumnDefinitions>
-        <TextBox Margin="10,10,10,10" Text="Версия 1.6"/>
+
+        <TextBox Margin="10,10,10,10"
+                 Text="{Binding version}"
+                 IsReadOnly="True" />
 
         <Button x:Name="btn_Ok" Content="Ок" HorizontalAlignment="Right" Margin="0,0,10,50" VerticalAlignment="Bottom" Width="100" Height="25" Click="btn_Ok_Click" Grid.Row="1"/>
     </Grid>

@@ -58,6 +58,10 @@
     </ItemGroup>
 
     <ItemGroup>
+      <ProjectReference Include="..\Common\Common.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
         <Resource Include="Resources\Icons\ingin.ico">
           <CopyToOutputDirectory></CopyToOutputDirectory>
         </Resource>

@@ -1,6 +1,9 @@
-﻿sealed partial class Build
+﻿using Common;
+
+sealed partial class Build
 {
-    const string Version = "1.0.2";
+    //const string Version = "1.0.2";
+    const string Version = VersionInfo.Version;
     readonly AbsolutePath ArtifactsDirectory = RootDirectory / "output";
     readonly AbsolutePath ChangeLogPath = RootDirectory / "Changelog.md";
 
