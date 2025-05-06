@@ -8,7 +8,7 @@ namespace Common
 {
     public static class VersionInfo
     {
-        public const string Version = "1.0.111";
+        public const string Version = "1.0.115";
     }
 }
 
