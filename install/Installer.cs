@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using Installer;
 using WixSharp;
 using WixSharp.CommonTasks;
@@ -27,6 +28,7 @@ var project = new Project
     }
 };
 
+
 var wixEntities = Generator.GenerateWixEntities(args);
 project.RemoveDialogsBetween(NativeDialogs.WelcomeDlg, NativeDialogs.CustomizeDlg);
 
@@ -43,6 +45,7 @@ void BuildSingleUserMsi()
     ];
     project.BuildMsi();
 }
+
 
 void BuildMultiUserUserMsi()
 {

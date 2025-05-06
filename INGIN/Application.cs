@@ -1,10 +1,12 @@
 ﻿using Autodesk.Revit.UI;
+using Autodesk.Revit.UI.Events;
 using INGIN.Commands;
 using INGIN.Helper;
 using INGIN.ScheduleSpecification;
 using Nice3point.Revit.Toolkit.External;
 using Serilog;
 using Serilog.Events;
+using System.Diagnostics;
 using System.Reflection;
 using System.Windows.Media.Imaging;
 
@@ -25,6 +27,7 @@ namespace INGIN
         public override void OnShutdown()
         {
             Log.CloseAndFlush();
+            //OnApplicationClosing();
         }
 
         private void CreateRibbon()
@@ -77,5 +80,11 @@ namespace INGIN
                 Log.Fatal(exception, "Domain unhandled exception");
             };
         }
+
+        private void OnApplicationClosing()
+        {
+            Process.Start(@"C:\RevitPlugins\Updater.exe");
+        }
+
     }
 }
