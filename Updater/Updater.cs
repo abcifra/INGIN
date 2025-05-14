@@ -68,7 +68,7 @@ namespace Updater
             process.StartInfo.CreateNoWindow = true;
             process.Start();
             process.WaitForExit();
-            var a = "sdhjsdsdkhksd";
+            var a = "sdhjsdsdkhksagfgd";
             if (process.ExitCode == 0)
             {
                 Console.WriteLine("Обновление завершено успешно!");
