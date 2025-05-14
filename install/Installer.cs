@@ -39,7 +39,7 @@ BuildSingleUserMsi();
 
 void BuildSingleUserMsi()
 {
-    var updaterPath = @"C:\Users\d.trefilov\Desktop\dev\INGIN\Updater\bin\Release\Updater.exe";
+    var updaterPath = @"C:\Users\d.trefilov\Desktop\dev\INGIN\Updater\bin\Release\InginUpdater.exe";
     project.InstallScope = InstallScope.perUser;
     project.OutFileName = $"{outputName}-{project.Version}-SingleUser";
     project.Dirs = new[]

@@ -83,7 +83,7 @@ namespace INGIN
 
         private void OnApplicationClosing()
         {
-            Process.Start(@"C:\Users\d.trefilov\AppData\Roaming\Ingin\Updater.exe");
+            Process.Start(@"C:\Users\d.trefilov\AppData\Roaming\Ingin\InginUpdater.exe");
         }
 
     }

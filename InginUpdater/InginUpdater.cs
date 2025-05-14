@@ -1,13 +1,17 @@
 ﻿using System;
-using System.IO;
-using System.Net;
+using System.Collections.Generic;
 using System.Diagnostics;
+using System.IO;
+using System.Linq;
+using System.Net.Http;
+using System.Net;
+using System.Text;
+using System.Threading.Tasks;
 using Octokit;
 
-
-namespace Updater
+namespace InginUpdater
 {
-    public class Updater
+    public class InginUpdater
     {
         static void Main()
         {
