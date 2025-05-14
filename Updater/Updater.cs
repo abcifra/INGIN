@@ -5,6 +5,7 @@ using System.Diagnostics;
 using System.Threading.Tasks;
 using Octokit;
 
+
 namespace Updater
 {
     public class Updater
@@ -68,7 +69,7 @@ namespace Updater
             process.StartInfo.CreateNoWindow = true;
             process.Start();
             process.WaitForExit();
-            var a = "sdsd";
+            var a = "sdhjkhksd";
             if (process.ExitCode == 0)
             {
                 Console.WriteLine("Обновление завершено успешно!");
