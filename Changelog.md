@@ -17,3 +17,6 @@ csdcnd skjcnmdsjkcvnkjsdnclknd4h35b34545b4
 
 # 1.0.117
 Тестирую автоматическое обновление
+
+# 1.0.118
+Change Updater.exe

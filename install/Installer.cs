@@ -35,7 +35,7 @@ var wixEntities = Generator.GenerateWixEntities(args);
 project.RemoveDialogsBetween(NativeDialogs.WelcomeDlg, NativeDialogs.CustomizeDlg);
 
 BuildSingleUserMsi();
-BuildMultiUserUserMsi();
+//BuildMultiUserUserMsi();
 
 void BuildSingleUserMsi()
 {
