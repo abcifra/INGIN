@@ -20,3 +20,6 @@ csdcnd skjcnmdsjkcvnkjsdnclknd4h35b34545b4
 
 # 1.0.118
 Change Updater.exe
+
+# 1.0.119
+Change Updater.exe
