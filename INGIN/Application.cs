@@ -27,7 +27,7 @@ namespace INGIN
         public override void OnShutdown()
         {
             Log.CloseAndFlush();
-            //OnApplicationClosing();
+            OnApplicationClosing();
         }
 
         private void CreateRibbon()
@@ -83,7 +83,7 @@ namespace INGIN
 
         private void OnApplicationClosing()
         {
-            Process.Start(@"C:\RevitPlugins\Updater.exe");
+            Process.Start(@"C:\Users\d.trefilov\AppData\Roaming\Ingin\Updater.exe");
         }
 
     }

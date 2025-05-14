@@ -16,11 +16,13 @@ var project = new Project
     Platform = Platform.x64,
     UI = WUI.WixUI_FeatureTree,
     MajorUpgrade = MajorUpgrade.Default,
+    Language = "ru-ru",
     //GUID = new Guid("5B08327F-93EB-4640-96BB-934F820EDB2A"),
     GUID = new Guid("7eba78d2-c69d-412e-9e26-ba042b7380f4"),
     BannerImage = @"install\Resources\Icons\BannerImage.png",
     BackgroundImage = @"install\Resources\Icons\BackgroundImage.png",
     Version = Assembly.GetExecutingAssembly().GetName().Version.ClearRevision(),
+    //Version = Version.Parse(Common.VersionInfo.Version),
     ControlPanelInfo =
     {
         Manufacturer = Environment.UserName,
@@ -33,16 +35,18 @@ var wixEntities = Generator.GenerateWixEntities(args);
 project.RemoveDialogsBetween(NativeDialogs.WelcomeDlg, NativeDialogs.CustomizeDlg);
 
 BuildSingleUserMsi();
-BuildMultiUserUserMsi();
+//BuildMultiUserUserMsi();
 
 void BuildSingleUserMsi()
 {
+    var updaterPath = @"C:\Users\d.trefilov\Desktop\dev\INGIN\Updater\bin\Release\Updater.exe";
     project.InstallScope = InstallScope.perUser;
     project.OutFileName = $"{outputName}-{project.Version}-SingleUser";
-    project.Dirs =
-    [
-        new InstallDir(@"%AppDataFolder%\Autodesk\Revit\Addins\", wixEntities)
-    ];
+    project.Dirs = new[]
+    {
+        new InstallDir(@"%AppDataFolder%\Autodesk\Revit\Addins\", wixEntities),
+        new Dir(@"C:\Users\d.trefilov\AppData\Roaming\Ingin", new File(updaterPath))
+    };
     project.BuildMsi();
 }
 
