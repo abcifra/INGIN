@@ -7,6 +7,7 @@ using System.Net.Http;
 using System.Net;
 using System.Text;
 using System.Threading.Tasks;
+using Octokit;
 
 namespace InginUpdater
 {
@@ -14,7 +15,7 @@ namespace InginUpdater
     {
         static void Main()
         {
-            Console.WriteLine("sdfksfjckdsjfkdsfssssdmf");
+            Console.WriteLine("sdfksfjckdsjfkdfdsfsfssssdmf");
             Console.ReadLine();
         }
         //static void Main()
