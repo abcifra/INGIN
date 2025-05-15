@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Linq;
 using Installer;
 using WixSharp;
@@ -39,13 +40,15 @@ BuildSingleUserMsi();
 
 void BuildSingleUserMsi()
 {
-    var updaterPath = @"C:\Users\d.trefilov\Desktop\dev\ING\INGIN\InginUpdater\bin\Release\InginUpdater.exe";
+    var updaterPath = @"..\InginUpdater\bin\Release\net8.0\InginUpdater.exe";
+    string targetPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "Ingin");
     project.InstallScope = InstallScope.perUser;
     project.OutFileName = $"{outputName}-{project.Version}-SingleUser";
     project.Dirs = new[]
     {
         new InstallDir(@"%AppDataFolder%\Autodesk\Revit\Addins\", wixEntities),
-        new Dir(@"C:\Users\d.trefilov\AppData\Roaming\Ingin", new File(updaterPath))
+        //new Dir(@"C:\Users\d.trefilov\AppData\Roaming\Ingin", new File(updaterPath))
+        new Dir(targetPath, new WixSharp.File(updaterPath))
     };
     project.BuildMsi();
 }
