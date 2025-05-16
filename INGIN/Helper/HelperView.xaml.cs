@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Diagnostics;
 using System.Linq;
 using System.Reflection;
 using System.Text;
@@ -35,6 +36,11 @@ namespace INGIN.Helper
         {
             //this.DialogResult = true;
             this.Close();
+        }
+
+        private void btn_Bla_Click(object sender, RoutedEventArgs e)
+        {
+            Process.Start(@"%AppDataFolder%\Ingin\InginUpdater.exe");
         }
     }
 }

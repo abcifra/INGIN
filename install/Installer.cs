@@ -48,10 +48,11 @@ void BuildSingleUserMsi()
     {
         new InstallDir(@"%AppDataFolder%\Autodesk\Revit\Addins\", wixEntities),
         //new Dir(@"C:\Users\d.trefilov\AppData\Roaming\Ingin", new File(updaterPath))
-        new Dir(targetPath, new WixSharp.File(updaterPath))
+        new Dir(targetPath, new WixSharp.File(updaterPath)),
     };
     project.BuildMsi();
 }
+
 
 
 void BuildMultiUserUserMsi()

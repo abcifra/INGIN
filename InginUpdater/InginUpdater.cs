@@ -90,6 +90,104 @@
 //    }
 //}
 
+//using System;
+//using System.IO;
+//using System.Net.Http;
+//using System.Diagnostics;
+//using System.Threading.Tasks;
+//using Octokit;
+
+//namespace InginUpdater
+//{
+//    public class InginUpdater
+//    {
+//        static void Main()
+//        {
+//            Console.WriteLine("HELLO WORLD!!!!!!!!!!!!!!");
+//            Console.ReadLine();
+//        }
+//        static async Task Main()
+//        {
+//            Console.WriteLine("HELLO WORLD!!!!!!!!!!!!!!");
+//            Console.ReadLine();
+//            try
+//            {
+//                var client = new GitHubClient(new ProductHeaderValue("RevitPluginUpdater"));
+//                var releases = await client.Repository.Release.GetAll("abcifra", "INGIN");
+
+//                if (releases.Count == 0)
+//                {
+//                    Console.WriteLine("Нет доступных релизов.");
+//                    return;
+//                }
+
+//                var latestRelease = releases[0];
+//                if (latestRelease.Assets.Count == 0)
+//                {
+//                    Console.WriteLine("Нет файлов для скачивания.");
+//                    return;
+//                }
+
+//                string downloadUrl = latestRelease.Assets[0].BrowserDownloadUrl;
+//                string fileName = Path.GetFileName(new Uri(downloadUrl).AbsolutePath);
+//                string localPath = Path.Combine(Path.GetTempPath(), fileName);
+
+//                await DownloadFileAsync(downloadUrl, localPath);
+//                Console.WriteLine("Обновление загружено!");
+
+//                InstallUpdate(localPath);
+//            }
+//            catch (Exception ex)
+//            {
+//                Console.WriteLine($"Ошибка: {ex.Message}");
+//            }
+//        }
+
+//        static async Task DownloadFileAsync(string url, string destinationPath)
+//        {
+//            try
+//            {
+//                using (var httpClient = new HttpClient())
+//                {
+//                    var response = await httpClient.GetAsync(url);
+//                    response.EnsureSuccessStatusCode();
+//                    await File.WriteAllBytesAsync(destinationPath, await response.Content.ReadAsByteArrayAsync());
+//                }
+//            }
+//            catch (Exception ex)
+//            {
+//                Console.WriteLine($"Ошибка загрузки файла: {ex.Message}");
+//            }
+//        }
+
+//        static void InstallUpdate(string msiPath)
+//        {
+//            var process = new Process
+//            {
+//                StartInfo = new ProcessStartInfo
+//                {
+//                    FileName = "msiexec.exe",
+//                    Arguments = $"/i \"{msiPath}\" /quiet /norestart",
+//                    UseShellExecute = false,
+//                    CreateNoWindow = true
+//                }
+//            };
+
+//            process.Start();
+//            process.WaitForExit();
+
+//            if (process.ExitCode == 0)
+//            {
+//                Console.WriteLine("Обновление завершено успешно!");
+//            }
+//            else
+//            {
+//                Console.WriteLine($"Ошибка при установке, код завершения: {process.ExitCode}. Попробуйте запустить установку вручную.");
+//            }
+//        }
+//    }
+//}
+
 using System;
 using System.IO;
 using System.Net.Http;
@@ -101,82 +199,10 @@ namespace InginUpdater
 {
     public class InginUpdater
     {
-        static async Task Main()
+        static void Main()
         {
-            try
-            {
-                var client = new GitHubClient(new ProductHeaderValue("RevitPluginUpdater"));
-                var releases = await client.Repository.Release.GetAll("abcifra", "INGIN");
-
-                if (releases.Count == 0)
-                {
-                    Console.WriteLine("Нет доступных релизов.");
-                    return;
-                }
-
-                var latestRelease = releases[0];
-                if (latestRelease.Assets.Count == 0)
-                {
-                    Console.WriteLine("Нет файлов для скачивания.");
-                    return;
-                }
-
-                string downloadUrl = latestRelease.Assets[0].BrowserDownloadUrl;
-                string fileName = Path.GetFileName(new Uri(downloadUrl).AbsolutePath);
-                string localPath = Path.Combine(Path.GetTempPath(), fileName);
-
-                await DownloadFileAsync(downloadUrl, localPath);
-                Console.WriteLine("Обновление загружено!");
-
-                InstallUpdate(localPath);
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine($"Ошибка: {ex.Message}");
-            }
-        }
-
-        static async Task DownloadFileAsync(string url, string destinationPath)
-        {
-            try
-            {
-                using (var httpClient = new HttpClient())
-                {
-                    var response = await httpClient.GetAsync(url);
-                    response.EnsureSuccessStatusCode();
-                    await File.WriteAllBytesAsync(destinationPath, await response.Content.ReadAsByteArrayAsync());
-                }
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine($"Ошибка загрузки файла: {ex.Message}");
-            }
-        }
-
-        static void InstallUpdate(string msiPath)
-        {
-            var process = new Process
-            {
-                StartInfo = new ProcessStartInfo
-                {
-                    FileName = "msiexec.exe",
-                    Arguments = $"/i \"{msiPath}\" /quiet /norestart",
-                    UseShellExecute = false,
-                    CreateNoWindow = true
-                }
-            };
-
-            process.Start();
-            process.WaitForExit();
-
-            if (process.ExitCode == 0)
-            {
-                Console.WriteLine("Обновление завершено успешно!");
-            }
-            else
-            {
-                Console.WriteLine($"Ошибка при установке, код завершения: {process.ExitCode}. Попробуйте запустить установку вручную.");
-            }
+            Console.WriteLine("HELLO WORLD!!!!!!!!!!!!!!");
+            Console.ReadLine();
         }
     }
 }
