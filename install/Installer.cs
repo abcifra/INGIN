@@ -38,21 +38,41 @@ project.RemoveDialogsBetween(NativeDialogs.WelcomeDlg, NativeDialogs.CustomizeDl
 BuildSingleUserMsi();
 //BuildMultiUserUserMsi();
 
+//void BuildSingleUserMsi()
+//{
+//    var updaterPath = @"..\InginUpdater\bin\Release\net8.0\InginUpdater.exe";
+//    string targetPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "Ingin");
+//    project.InstallScope = InstallScope.perUser;
+//    project.OutFileName = $"{outputName}-{project.Version}-SingleUser";
+//    project.Dirs = new[]
+//    {
+//        new InstallDir(@"%AppDataFolder%\Autodesk\Revit\Addins\", wixEntities),
+//        new Dir(targetPath, new WixSharp.File(updaterPath)),
+//    };
+//    project.BuildMsi();
+//}
+
 void BuildSingleUserMsi()
 {
-    var updaterPath = @"..\InginUpdater\bin\Release\net8.0\InginUpdater.exe";
+    var updaterPath1 = @"..\InginUpdater\bin\Release\net8.0\InginUpdater.exe";
+    var updaterPath2 = @"..\InginUpdater\bin\Release\net8.0\InginUpdater.deps.json";
+    var updaterPath3 = @"..\InginUpdater\bin\Release\net8.0\InginUpdater.dll";
+    var updaterPath4 = @"..\InginUpdater\bin\Release\net8.0\InginUpdater.pdb";
+    var updaterPath5 = @"..\InginUpdater\bin\Release\net8.0\InginUpdater.runtimeconfig.json";
     string targetPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "Ingin");
     project.InstallScope = InstallScope.perUser;
     project.OutFileName = $"{outputName}-{project.Version}-SingleUser";
     project.Dirs = new[]
     {
         new InstallDir(@"%AppDataFolder%\Autodesk\Revit\Addins\", wixEntities),
-        //new Dir(@"C:\Users\d.trefilov\AppData\Roaming\Ingin", new File(updaterPath))
-        new Dir(targetPath, new WixSharp.File(updaterPath)),
+        new Dir(targetPath, new WixSharp.File(updaterPath1)),
+        new Dir(targetPath, new WixSharp.File(updaterPath2)),
+        new Dir(targetPath, new WixSharp.File(updaterPath3)),
+        new Dir(targetPath, new WixSharp.File(updaterPath4)),
+        new Dir(targetPath, new WixSharp.File(updaterPath5)),
     };
     project.BuildMsi();
 }
-
 
 
 void BuildMultiUserUserMsi()
