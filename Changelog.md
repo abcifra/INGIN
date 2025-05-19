@@ -53,3 +53,6 @@ Change Updater.exe and Yoooudfdfdfdcdscu!
 
 # 1.0.129
 Change Updater.exe and Yoooudfdfdfdcdscu!
+
+# 1.0.130
+Change Updater.exe and Yoooudfdfdfdcdscu!

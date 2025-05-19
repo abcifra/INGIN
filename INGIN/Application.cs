@@ -7,6 +7,7 @@ using Nice3point.Revit.Toolkit.External;
 using Serilog;
 using Serilog.Events;
 using System.Diagnostics;
+using System.IO;
 using System.Reflection;
 using System.Windows.Media.Imaging;
 
@@ -81,11 +82,17 @@ namespace INGIN
             };
         }
 
+        //private void OnApplicationClosing()
+        //{
+        //    //Process.Start(@"%AppDataFolder%\Ingin\InginUpdater.exe");
+        //    Process.Start(@"C:\Users\d.trefilov\AppData\Roaming\Ingin\InginUpdater.exe");
+
+        //}
+
         private void OnApplicationClosing()
         {
-            //Process.Start(@"%AppDataFolder%\Ingin\InginUpdater.exe");
-            Process.Start(@"C:\Users\d.trefilov\AppData\Roaming\Ingin\InginUpdater.exe");
-            
+            string appDataPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "Ingin", "InginUpdater.exe");
+            Process.Start(appDataPath);
         }
 
     }
