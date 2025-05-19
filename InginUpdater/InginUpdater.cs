@@ -200,7 +200,7 @@ namespace InginUpdater
     {
         static void Main()
         {
-            Console.WriteLine("HELLO WORLD!!!!!!dcd!!!!!!!!!");
+            Console.WriteLine("HELLO WORLD!!!dsd!!!dcd!!!!!!!!!");
             Console.ReadLine();
         }
     }

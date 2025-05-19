@@ -3,7 +3,7 @@ using System.IO;
 using System.Net.Http;
 using System.Diagnostics;
 using System.Threading.Tasks;
-using Octokit;
+//using Octokit;
 
 namespace InginUpdater
 {
@@ -11,7 +11,7 @@ namespace InginUpdater
     {
         static void Main()
         {
-            Console.WriteLine("HELLO WORLD!!!!!!!!!!dcd!!!!!");
+            Console.WriteLine("HELLO WORLD!!!!!!!dssad!!!dcd!!!!!");
             Console.ReadLine();
         }
     }
