@@ -59,6 +59,7 @@ void BuildSingleUserMsi()
     var updaterPath3 = @"..\InginUpdater\bin\Release\net8.0\InginUpdater.dll";
     var updaterPath4 = @"..\InginUpdater\bin\Release\net8.0\InginUpdater.pdb";
     var updaterPath5 = @"..\InginUpdater\bin\Release\net8.0\InginUpdater.runtimeconfig.json";
+    var updaterPath6 = @"..\InginUpdater\bin\Release\net8.0\Octokit.dll";
     string targetPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "Ingin");
     project.InstallScope = InstallScope.perUser;
     project.OutFileName = $"{outputName}-{project.Version}-SingleUser";
@@ -70,6 +71,7 @@ void BuildSingleUserMsi()
         new Dir(targetPath, new WixSharp.File(updaterPath3)),
         new Dir(targetPath, new WixSharp.File(updaterPath4)),
         new Dir(targetPath, new WixSharp.File(updaterPath5)),
+        new Dir(targetPath, new WixSharp.File(updaterPath6)),
     };
     project.BuildMsi();
 }

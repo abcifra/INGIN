@@ -51,6 +51,9 @@ namespace InginUpdater
             {
                 Console.WriteLine($"Ошибка: {ex.Message}");
             }
+
+            Console.WriteLine("Нажмите Enter для выхода...");
+            Console.ReadLine();
         }
 
         static void DownloadFile(string url, string destinationPath)
