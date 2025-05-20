@@ -35,56 +35,68 @@ var project = new Project
 var wixEntities = Generator.GenerateWixEntities(args);
 project.RemoveDialogsBetween(NativeDialogs.WelcomeDlg, NativeDialogs.CustomizeDlg);
 
-BuildSingleUserMsi();
-//BuildMultiUserUserMsi();
-
-//void BuildSingleUserMsi()
-//{
-//    var updaterPath = @"..\InginUpdater\bin\Release\net8.0\InginUpdater.exe";
-//    string targetPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "Ingin");
-//    project.InstallScope = InstallScope.perUser;
-//    project.OutFileName = $"{outputName}-{project.Version}-SingleUser";
-//    project.Dirs = new[]
-//    {
-//        new InstallDir(@"%AppDataFolder%\Autodesk\Revit\Addins\", wixEntities),
-//        new Dir(targetPath, new WixSharp.File(updaterPath)),
-//    };
-//    project.BuildMsi();
-//}
+//BuildSingleUserMsi();
+BuildMultiUserUserMsi();
 
 void BuildSingleUserMsi()
 {
-    var updaterPath1 = @"..\InginUpdater\bin\Release\net8.0\InginUpdater.exe";
-    var updaterPath2 = @"..\InginUpdater\bin\Release\net8.0\InginUpdater.deps.json";
-    var updaterPath3 = @"..\InginUpdater\bin\Release\net8.0\InginUpdater.dll";
-    var updaterPath4 = @"..\InginUpdater\bin\Release\net8.0\InginUpdater.pdb";
-    var updaterPath5 = @"..\InginUpdater\bin\Release\net8.0\InginUpdater.runtimeconfig.json";
-    var updaterPath6 = @"..\InginUpdater\bin\Release\net8.0\Octokit.dll";
+    string[] updaterFiles =
+    {
+        "InginUpdater.exe",
+        "InginUpdater.deps.json",
+        "InginUpdater.dll",
+        "InginUpdater.pdb",
+        "InginUpdater.runtimeconfig.json",
+        "Octokit.dll"
+    };
+
+    string updaterBasePath = @"..\InginUpdater\bin\Release\net8.0\";
     string targetPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "Ingin");
-    //string targetPath = @"%AppDataFolder%\Ingin";
+
     project.InstallScope = InstallScope.perUser;
     project.OutFileName = $"{outputName}-{project.Version}-SingleUser";
+
     project.Dirs = new[]
     {
         new InstallDir(@"%AppDataFolder%\Autodesk\Revit\Addins\", wixEntities),
-        new Dir(targetPath, new WixSharp.File(updaterPath1)),
-        new Dir(targetPath, new WixSharp.File(updaterPath2)),
-        new Dir(targetPath, new WixSharp.File(updaterPath3)),
-        new Dir(targetPath, new WixSharp.File(updaterPath4)),
-        new Dir(targetPath, new WixSharp.File(updaterPath5)),
-        new Dir(targetPath, new WixSharp.File(updaterPath6)),
+        new Dir(targetPath, updaterFiles.Select(file => new WixSharp.File(Path.Combine(updaterBasePath, file))).ToArray())
     };
+
     project.BuildMsi();
 }
 
 
+//void BuildMultiUserUserMsi()
+//{
+//    project.InstallScope = InstallScope.perMachine;
+//    project.OutFileName = $"{outputName}-{project.Version}-MultiUser";
+//    project.Dirs =
+//    [
+//        new InstallDir(@"%CommonAppDataFolder%\Autodesk\Revit\Addins\", wixEntities)
+//    ];
+//    project.BuildMsi();
+//}
+
 void BuildMultiUserUserMsi()
 {
+    string[] updaterFiles =
+{
+        "InginUpdater.exe",
+        "InginUpdater.deps.json",
+        "InginUpdater.dll",
+        "InginUpdater.pdb",
+        "InginUpdater.runtimeconfig.json",
+        "Octokit.dll"
+    };
+    string updaterBasePath = @"..\InginUpdater\bin\Release\net8.0\";
+    string targetPath = @"C:\ProgramData\Ingin";
+
     project.InstallScope = InstallScope.perMachine;
     project.OutFileName = $"{outputName}-{project.Version}-MultiUser";
     project.Dirs =
     [
-        new InstallDir(@"%CommonAppDataFolder%\Autodesk\Revit\Addins\", wixEntities)
+        new InstallDir(@"%CommonAppDataFolder%\Autodesk\Revit\Addins\", wixEntities),
+        new Dir(targetPath, updaterFiles.Select(file => new WixSharp.File(Path.Combine(updaterBasePath, file))).ToArray())
     ];
     project.BuildMsi();
 }
