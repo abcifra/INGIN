@@ -26,7 +26,7 @@ var project = new Project
     //Version = Version.Parse(Common.VersionInfo.Version),
     ControlPanelInfo =
     {
-        Manufacturer = Environment.UserName,
+        Manufacturer = "INGIN",
         ProductIcon = @"install\Resources\Icons\ShellIcon.ico"
     }
 };
@@ -61,6 +61,7 @@ void BuildSingleUserMsi()
     var updaterPath5 = @"..\InginUpdater\bin\Release\net8.0\InginUpdater.runtimeconfig.json";
     var updaterPath6 = @"..\InginUpdater\bin\Release\net8.0\Octokit.dll";
     string targetPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "Ingin");
+    //string targetPath = @"%AppDataFolder%\Ingin";
     project.InstallScope = InstallScope.perUser;
     project.OutFileName = $"{outputName}-{project.Version}-SingleUser";
     project.Dirs = new[]

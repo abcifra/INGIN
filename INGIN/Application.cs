@@ -82,18 +82,18 @@ namespace INGIN
             };
         }
 
-        //private void OnApplicationClosing()
-        //{
-        //    //Process.Start(@"%AppDataFolder%\Ingin\InginUpdater.exe");
-        //    Process.Start(@"C:\Users\d.trefilov\AppData\Roaming\Ingin\InginUpdater.exe");
-
-        //}
-
         private void OnApplicationClosing()
         {
-            string appDataPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "Ingin", "InginUpdater.exe");
-            Process.Start(appDataPath);
+            Process.Start(@"%AppDataFolder%\Ingin\InginUpdater.exe");
+            //Process.Start(@"C:\Users\d.trefilov\AppData\Roaming\Ingin\InginUpdater.exe");
+
         }
+
+        //private void OnApplicationClosing()
+        //{
+        //    string appDataPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "Ingin", "InginUpdater.exe");
+        //    Process.Start(appDataPath);
+        //}
 
     }
 }
