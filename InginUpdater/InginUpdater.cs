@@ -80,7 +80,7 @@ namespace InginUpdater
             process.StartInfo.CreateNoWindow = true;
             process.Start();
             process.WaitForExit();
-            var a = "sdhjsdsdkhrtrsdsdsdtkfggsagfgd";
+            var a = "sdhjsdsdkhrtrsdsdsdtkfggsarfefdefecedsfgfgd";
             if (process.ExitCode == 0)
             {
                 Console.WriteLine("Обновление завершено успешно!");
