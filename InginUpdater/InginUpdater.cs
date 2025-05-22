@@ -8,6 +8,7 @@ using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using Octokit;
+using Common;
 
 namespace InginUpdater
 {
@@ -17,6 +18,7 @@ namespace InginUpdater
         {
             try
             {
+                Version currentVersion = new Version(VersionInfo.Version);
                 var client = new GitHubClient(new ProductHeaderValue("RevitPluginUpdater"));
                 var releases = client.Repository.Release.GetAll("abcifra", "INGIN").Result;
 
@@ -27,6 +29,17 @@ namespace InginUpdater
                 }
 
                 var latestRelease = releases[0];
+
+                string tag = latestRelease.TagName?.TrimStart('v', 'V') ?? "0.0.0";
+                Version latestVersion = new Version(tag);
+
+                if (latestVersion <= currentVersion)
+                {
+                    Console.WriteLine("Установлена последняя версия.");
+                    return;
+                }
+
+
                 if (latestRelease.Assets.Count == 0)
                 {
                     Console.WriteLine("Нет файлов для скачивания.");
@@ -66,27 +79,6 @@ namespace InginUpdater
             }
         }
 
-        //static void InstallUpdate(string msiPath)
-        //{
-        //    var process = new Process();
-        //    process.StartInfo.FileName = "msiexec.exe";
-        //    process.StartInfo.Arguments = $"/i \"{msiPath}\" /quiet /norestart";
-        //    process.StartInfo.UseShellExecute = false;
-        //    process.StartInfo.CreateNoWindow = true;
-        //    process.Start();
-        //    process.WaitForExit();
-        //    var a = "sdhjsdsdkhrtrsdsdsdfsdfddtkfggsagfgd";
-        //    if (process.ExitCode == 0)
-        //    {
-        //        Console.WriteLine("Обновление завершено успешно!");
-        //    }
-        //    else
-        //    {
-        //        Console.WriteLine($"Ошибка при установке, код завершения: {process.ExitCode}");
-        //        Console.WriteLine("Нажмите Enter для выхода...");
-        //        Console.ReadLine();
-        //    }
-        //}
         static void InstallUpdate(string msiPath)
         {
             var process = new Process();
@@ -113,9 +105,6 @@ namespace InginUpdater
             {
                 Console.WriteLine($"Ошибка при запуске установки: {ex.Message}");
             }
-
-            Console.WriteLine("Нажмите Enter для выхода...");
-            Console.ReadLine();
         }
 
     }
