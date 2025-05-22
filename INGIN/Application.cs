@@ -85,6 +85,7 @@ namespace INGIN
         private void OnApplicationClosing()
         {
             //Process.Start(@"%AppDataFolder%\Ingin\InginUpdater.exe");
+            var a = "dcdvcl;v,";
             string programDataPath = Environment.GetFolderPath(Environment.SpecialFolder.CommonApplicationData);
             string updaterPath = Path.Combine(programDataPath, @"Ingin\InginUpdater.exe");
 
