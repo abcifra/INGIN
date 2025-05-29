@@ -1,0 +1,11 @@
+﻿<RevitAddIns>
+    <AddIn Type="Application">
+        <Name>INGIN</Name>
+        <Assembly>INGIN/INGIN.dll</Assembly>
+        <AddInId>12A2C902-AB7F-43B3-807A-55E63AE1C0BD</AddInId>
+        <FullClassName>INGIN.Application</FullClassName>
+        <VendorId>Development</VendorId>
+        <VendorDescription></VendorDescription>
+        <VendorEmail></VendorEmail>
+    </AddIn>
+</RevitAddIns>
